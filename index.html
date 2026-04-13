@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Skills for Marketing & Communications Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --surface: #ffffff;
+    --surface2: #f0ece4;
+    --border: #e0d8cc;
+    --ink: #1a1714;
+    --accent: #d4500a;
+    --accent2: #2a5c8a;
+    --accent3: #2a7a4a;
+    --muted: #7a7060;
+    --tag-bg: #ede8df;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--ink);
+    color: #f7f4ef;
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle at bottom right, rgba(212,80,10,0.15), transparent 60%);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  h1 .highlight { color: var(--accent); }
+
+  .header-desc {
+    font-size: 15px;
+    color: #b0a898;
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid #3a3530;
+    color: #9a9080;
+    border-radius: 2px;
+  }
+
+  .meta-pill.live { border-color: var(--accent); color: var(--accent); }
+
+  /* INTRO BANNER */
+  .intro-banner {
+    background: var(--accent2);
+    color: white;
+    padding: 16px 48px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro-banner strong { font-weight: 700; }
+  .intro-banner a { color: #a8d0f0; text-decoration: underline; padding: 2px 0; }
+
+  /* NAV / CONTROLS */
+  .controls {
+    padding: 18px 48px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 0 var(--border);
+  }
+
+  .filter-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 5px 13px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: all 0.15s;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .filter-btn:hover { color: var(--ink); border-color: #ccc; }
+  .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .search-box {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    width: 220px;
+    border-radius: 2px;
+  }
+
+  .search-box:focus { border-color: var(--accent); }
+
+  /* SECTION HEADER */
+  .section-header {
+    padding: 32px 48px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+  }
+
+  /* REPO CARDS */
+  .repo-grid {
+    padding: 20px 48px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 16px;
+  }
+
+  .repo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  @media (hover: hover) {
+    .repo-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+    }
+  }
+
+  .repo-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .repo-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .repo-icon.official { background: #fff3ee; }
+  .repo-icon.community { background: #eef3ff; }
+  .repo-icon.focused { background: #eefff4; }
+
+  .repo-title-group { flex: 1; }
+
+  .repo-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .repo-handle {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .badge-official { background: #fff3ee; color: var(--accent); border: 1px solid rgba(212,80,10,0.2); }
+  .badge-community { background: #eef3ff; color: var(--accent2); border: 1px solid rgba(42,92,138,0.2); }
+  .badge-focused { background: #eefff4; color: var(--accent3); border: 1px solid rgba(42,122,74,0.2); }
+  .badge-curated { background: #f5f0ff; color: #6040b0; border: 1px solid rgba(96,64,176,0.2); }
+
+  .repo-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .repo-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: var(--tag-bg);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+
+  .repo-stats {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .stat {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat .val { color: var(--ink); font-weight: 500; }
+
+  .repo-footer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 4px;
+    border-top: 1px solid var(--surface2);
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    background: var(--ink);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-secondary {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.15s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
+
+  .copy-install {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 7px 14px;
+    background: var(--surface2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: auto;
+    transition: all 0.15s;
+  }
+
+  .copy-install:hover { color: var(--accent); border-color: var(--accent); }
+  .copy-install.copied { color: var(--accent3); border-color: var(--accent3); }
+
+  /* SUBMIT SECTION */
+  .submit-section {
+    margin: 0 48px 48px;
+    background: var(--ink);
+    color: #f7f4ef;
+    border-radius: 4px;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .submit-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .submit-desc {
+    font-size: 13px;
+    color: #9a9080;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .submit-desc code {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: #2a2520;
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: #d4b090;
+  }
+
+  .submit-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+    display: inline-block;
+  }
+
+  .submit-btn:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+  }
+
+  .footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-text a { color: var(--accent); text-decoration: none; }
+  .footer-text a:hover { text-decoration: underline; }
+
+  .visible-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  .no-results {
+    padding: 60px 48px;
+    font-family: 'Syne', sans-serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 18px;
+    grid-column: 1/-1;
+  }
+
+  @media (max-width: 680px) {
+    .header, .controls, .repo-grid, .submit-section, .footer, .section-header { padding-left: 20px; padding-right: 20px; }
+    .repo-grid { grid-template-columns: 1fr; }
+    .submit-section { grid-template-columns: 1fr; }
+    .search-box { width: 100%; margin-left: 0; }
+    .intro-banner { padding: 12px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="eyebrow">Community Resource · Updated April 2026</div>
+    <h1>Claude Code Skills for<br><span class="highlight">Marketing & Communications</span><br>Directory</h1>
+    <p class="header-desc">A curated directory of real, installable Claude Code skills built by the community — filtered for marketing and communications work. No developer background needed to use them.</p>
+    <div class="header-meta">
+      <span class="meta-pill live">● Live directory</span>
+      <span class="meta-pill">Open source</span>
+      <span class="meta-pill">PR submissions welcome</span>
+      <span class="meta-pill">Free to use</span>
+    </div>
+  </div>
+</header>
+
+<div class="intro-banner">
+  <span>⚡</span>
+  <span><strong>New to Claude Code?</strong> It's a command-line tool where you describe what you want in plain English and Claude writes and runs the code. No coding required. <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Read the intro →</a> &nbsp;·&nbsp; Also see: <a href="https://monitalan.github.io/-claude-skills-marketers/claude-skills-marketers.html">50 Claude Prompts for Marketers</a></span>
+</div>
+
+<div class="controls">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-cat="all">All</button>
+  <button class="filter-btn" data-cat="content">Content & Brand</button>
+  <button class="filter-btn" data-cat="analytics">Analytics & CRO</button>
+  <button class="filter-btn" data-cat="strategy">Strategy & SEO</button>
+  <button class="filter-btn" data-cat="collection">Collections</button>
+  <input class="search-box" type="text" placeholder="Search skills..." id="searchInput">
+</div>
+
+<div id="sectionHeader" class="section-header">
+  <span class="section-title">Skills & Repositories</span>
+  <span class="section-count" id="countLabel">16 entries</span>
+</div>
+
+<div class="repo-grid" id="grid"></div>
+
+<div class="submit-section" id="submitSection">
+  <div>
+    <div class="submit-title">Built a skill for marketers or comms pros?</div>
+    <p class="submit-desc">Submit it to this directory via GitHub Pull Request. Add your entry to <code>skills-data.js</code> with name, repo URL, description, tags, and install command. All submissions are reviewed before merging.</p>
+    <p class="submit-desc" style="margin-top:8px;">Requirements: skill must be publicly available on GitHub, have a working <code>SKILL.md</code>, and be relevant to marketing or communications work.</p>
+  </div>
+  <a class="submit-btn" href="https://github.com/monitalan/-claude-skills-marketers/pulls" target="_blank">Submit via PR →</a>
+</div>
+
+<footer class="footer">
+  <span class="footer-text">
+    Curated by <a href="https://github.com/monitalan" target="_blank">@monitalan</a> · 
+    <a href="https://monitalan.github.io/-claude-skills-marketers/claude-skills-marketers.html">← 50 Claude Prompts for Marketers</a>
+  </span>
+  <span class="visible-count" id="visibleCount">16 shown</span>
+</footer>
+
+<script>
+const entries = [
+  // OFFICIAL
+  {
+    id: 1,
+    name: "Anthropic Official Skills",
+    handle: "anthropics/skills",
+    icon: "🏛️",
+    iconType: "official",
+    badge: "official",
+    badgeLabel: "Official",
+    desc: "Anthropic's own skill library. Includes enterprise communication skills, document manipulation (DOCX, PDF, PPTX, XLSX), brand guidelines, and internal comms templates. The baseline everything else builds on.",
+    tags: ["content", "collection"],
+    stars: "22k+",
+    skills: "50+",
+    url: "https://github.com/anthropics/skills",
+    installCmd: "/plugin install document-skills@anthropic-agent-skills",
+    docsUrl: "https://docs.anthropic.com/en/docs/claude-code/skills"
+  },
+  // MARKETING COLLECTIONS
+  {
+    id: 2,
+    name: "Marketing Skills by Corey Haines",
+    handle: "coreyhaines31/marketingskills",
+    icon: "📈",
+    iconType: "focused",
+    badge: "focused",
+    badgeLabel: "Marketing-focused",
+    desc: "The most marketer-native skill collection available. Built by Corey Haines (Swipe Files). Covers CRO, copywriting, cold email, SEO, analytics, paid ads, email sequences, referral, churn prevention, and GTM. Built for technical marketers and founders — works with Claude Code, Cursor, and Codex.",
+    tags: ["content", "strategy", "analytics", "collection"],
+    installCmd: "npx ai-agent-skills install coreyhaines31/marketingskills",
+    docsUrl: "https://github.com/coreyhaines31/marketingskills#readme"
+  },
+  {
+    id: 3,
+    name: "alirezarezvani Marketing Pod",
+    handle: "alirezarezvani/claude-skills",
+    icon: "🚀",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "43 marketing skills organized into 7 pods: Content (8), SEO (5), CRO (6), Channels (6), Growth (4), Intelligence (4), Sales (2) — plus a context foundation and orchestration router. One of the most comprehensive marketing skill bundles available. 5,200+ GitHub stars.",
+    tags: ["content", "strategy", "analytics", "collection"],
+    stars: "5.2k",
+    skills: "43",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill",
+    installCmd: "/plugin install marketing-skills@claude-code-skills",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills"
+  },
+  // INDIVIDUAL SKILLS
+  {
+    id: 4,
+    name: "Content Creator Skill",
+    handle: "alirezarezvani/claude-skills",
+    icon: "✍️",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "Professional-grade content creation with brand voice analysis, SEO optimization, and platform-specific best practices. Includes 15+ content templates (blog, email, social, video scripts, case studies) and social media guides for LinkedIn, X, Instagram, TikTok.",
+    tags: ["content"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/content-creator",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/content-creator",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/content-creator"
+  },
+  {
+    id: 5,
+    name: "Brand Guidelines Skill",
+    handle: "alirezarezvani/claude-skills",
+    icon: "🎨",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "Applies and audits brand voice, visual identity, and messaging consistency across channels. Checks logo usage, color codes, typography, and tone — and flags deviations. Integrates with product marketing context for brand-ICP alignment.",
+    tags: ["content"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/brand-guidelines",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/brand-guidelines",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/brand-guidelines"
+  },
+  {
+    id: 6,
+    name: "Product Marketing Strategy (PMM)",
+    handle: "alirezarezvani/claude-skills",
+    icon: "🗺️",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "GTM strategy, competitive positioning, ICP definition, and product launch planning. Uses April Dunford positioning frameworks, produces competitive battlecards, launch playbooks, and go-to-market strategies.",
+    tags: ["strategy"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/marketing-strategy-pmm",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/marketing-strategy-pmm",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/blob/main/marketing-skill/marketing-strategy-pmm/SKILL.md"
+  },
+  {
+    id: 7,
+    name: "Campaign Analytics Skill",
+    handle: "alirezarezvani/claude-skills",
+    icon: "📊",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "Multi-touch attribution modeling, funnel conversion analysis, and ROI calculation. Implements 5 attribution models, compares channels, and outputs exec-ready reports. Includes Python CLI tools — zero external dependencies.",
+    tags: ["analytics"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/campaign-analytics",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/campaign-analytics",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/blob/main/marketing-skill/campaign-analytics/SKILL.md"
+  },
+  {
+    id: 8,
+    name: "Page CRO Skill",
+    handle: "alirezarezvani/claude-skills",
+    icon: "🎯",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "Landing page, homepage, and pricing page conversion optimization. Organizes recommendations as Quick Wins → High-Impact → Test Ideas. Auto-triggers on new page builds or when paid traffic is mentioned. Works with product marketing context.",
+    tags: ["analytics"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/page-cro",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/page-cro",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/blob/main/marketing-skill/page-cro/SKILL.md"
+  },
+  {
+    id: 9,
+    name: "Social Media Analyzer",
+    handle: "alirezarezvani/claude-skills",
+    icon: "📱",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "Analyzes social media performance across platforms. Identifies content themes, engagement patterns, and audience signals. Pairs with content-strategy skill for a full social intelligence workflow.",
+    tags: ["analytics", "content"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/social-media-analyzer",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/social-media-analyzer",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/blob/main/marketing-skill/social-media-analyzer/SKILL.md"
+  },
+  {
+    id: 10,
+    name: "App Store Optimization (ASO)",
+    handle: "alirezarezvani/claude-skills",
+    icon: "📲",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "Keyword research, competitor analysis, metadata optimization, and A/B test planning for Apple App Store and Google Play. Outputs scored keyword lists, optimized titles/descriptions, and launch checklists.",
+    tags: ["strategy", "analytics"],
+    stars: "5.2k",
+    skills: "1",
+    url: "https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/app-store-optimization",
+    installCmd: "npx ai-agent-skills install alirezarezvani/claude-skills/marketing-skill/app-store-optimization",
+    docsUrl: "https://github.com/alirezarezvani/claude-skills/blob/main/marketing-skill/app-store-optimization/SKILL.md"
+  },
+  // GROWTH & COMMS
+  {
+    id: 13,
+    name: "Growth & Marketing Skills (Hormozi, Ries, Cialdini)",
+    handle: "wondelai/skills",
+    icon: "📚",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "25 agent skills for marketing, CRO, sales, and growth — built on frameworks from Alex Hormozi ($100M Offers), Eric Ries (Lean Startup), Robert Cialdini, and Don Norman. Practical, book-grounded, and immediately applicable.",
+    tags: ["strategy", "analytics", "collection"],
+    stars: "—",
+    skills: "25",
+    url: "https://github.com/wondelai/skills",
+    installCmd: "npx ai-agent-skills install wondelai/skills",
+    docsUrl: "https://github.com/wondelai/skills"
+  },
+  {
+    id: 14,
+    name: "Developer Marketing Skills",
+    handle: "devmarketing-skills",
+    icon: "👩‍💻",
+    iconType: "community",
+    badge: "community",
+    badgeLabel: "Community",
+    desc: "33 skills built specifically for developer marketing — HN strategy, technical tutorials, docs-as-marketing, Reddit engagement, developer onboarding, newsletters, and SEO for devtools. Ideal for comms and marketing pros at tech companies.",
+    tags: ["content", "strategy", "collection"],
+    stars: "—",
+    skills: "33",
+    url: "https://github.com/search?q=devmarketing-skills&type=repositories",
+    installCmd: "npx ai-agent-skills install devmarketing-skills",
+    docsUrl: "https://github.com/search?q=devmarketing-skills&type=repositories"
+  },
+  // CURATED LISTS
+  {
+    id: 15,
+    name: "Awesome Claude Skills (travisvn)",
+    handle: "travisvn/awesome-claude-skills",
+    icon: "⭐",
+    iconType: "official",
+    badge: "curated",
+    badgeLabel: "Curated list",
+    desc: "The most comprehensive curated list of Claude Skills. Organized by category with descriptions, install notes, and compatibility info. Good starting point for discovering skills across all domains — not just marketing.",
+    tags: ["collection"],
+    stars: "—",
+    skills: "200+",
+    url: "https://github.com/travisvn/awesome-claude-skills",
+    installCmd: "# Browse the list and install individually",
+    docsUrl: "https://github.com/travisvn/awesome-claude-skills"
+  },
+  {
+    id: 16,
+    name: "Awesome Claude Skills (ComposioHQ)",
+    handle: "ComposioHQ/awesome-claude-skills",
+    icon: "🔌",
+    iconType: "official",
+    badge: "curated",
+    badgeLabel: "Curated list",
+    desc: "Composio's curated list with a focus on skills that take real actions — sending emails, posting to Slack, creating issues, updating databases. Strong for comms and ops professionals who want Claude to do things, not just generate text.",
+    tags: ["comms", "collection"],
+    stars: "—",
+    skills: "500+",
+    url: "https://github.com/ComposioHQ/awesome-claude-skills",
+    installCmd: "# Browse and install via individual skill repos",
+    docsUrl: "https://github.com/ComposioHQ/awesome-claude-skills"
+  },
+  {
+    id: 17,
+    name: "Antigravity Awesome Skills",
+    handle: "sickn33/antigravity-awesome-skills",
+    icon: "🗂️",
+    iconType: "official",
+    badge: "curated",
+    badgeLabel: "Curated list",
+    desc: "1,400+ skills with an npm-based installer (npx antigravity-awesome-skills). Bundles, workflows, and role-based collections. Includes marketing and growth bundles. 32k+ GitHub stars — the largest installable skill library.",
+    tags: ["collection"],
+    stars: "32k+",
+    skills: "1400+",
+    url: "https://github.com/sickn33/antigravity-awesome-skills",
+    installCmd: "npx antigravity-awesome-skills",
+    docsUrl: "https://github.com/sickn33/antigravity-awesome-skills"
+  },
+  {
+    id: 18,
+    name: "Claude Skills Collection (abubakarsiddik31)",
+    handle: "abubakarsiddik31/claude-skills-collection",
+    icon: "📋",
+    iconType: "official",
+    badge: "curated",
+    badgeLabel: "Curated list",
+    desc: "Gathers and organizes official and community skills in one place. Includes install instructions, skill descriptions, and contribution guidelines. Good browsable index if you want to explore before committing to a full bundle.",
+    tags: ["collection"],
+    stars: "—",
+    skills: "100+",
+    url: "https://github.com/abubakarsiddik31/claude-skills-collection",
+    installCmd: "# Browse and install via individual skill repos",
+    docsUrl: "https://github.com/abubakarsiddik31/claude-skills-collection"
+  }
+];
+
+const badgeColors = { official: 'badge-official', community: 'badge-community', focused: 'badge-focused', curated: 'badge-curated' };
+
+let currentCat = 'all';
+let currentSearch = '';
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  let visible = 0;
+
+  entries.forEach(e => {
+    const matchCat = currentCat === 'all' || e.tags.includes(currentCat);
+    const matchSearch = !currentSearch ||
+      e.name.toLowerCase().includes(currentSearch) ||
+      e.desc.toLowerCase().includes(currentSearch) ||
+      e.handle.toLowerCase().includes(currentSearch);
+    if (!matchCat || !matchSearch) return;
+    visible++;
+
+    const card = document.createElement('div');
+    card.className = 'repo-card';
+    card.innerHTML = `
+      <div class="repo-card-top">
+        <div class="repo-icon ${e.iconType}">${e.icon}</div>
+        <div class="repo-title-group">
+          <div class="repo-name">${e.name}</div>
+          <div class="repo-handle">${e.handle}</div>
+        </div>
+        <span class="badge ${badgeColors[e.badge]}">${e.badgeLabel}</span>
+      </div>
+      <p class="repo-desc">${e.desc}</p>
+      <div class="repo-tags">${e.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="repo-stats">
+        ${e.stars !== '—' ? `<span class="stat">★ <span class="val">${e.stars}</span> stars</span>` : ''}
+        <span class="stat">📦 <span class="val">${e.skills}</span> skills</span>
+      </div>
+      <div class="repo-footer">
+        <a class="btn-primary" href="${e.url}" target="_blank">View on GitHub</a>
+        <a class="btn-secondary" href="${e.docsUrl}" target="_blank">Docs</a>
+        <button class="copy-install" data-cmd="${e.installCmd.replace(/"/g,'&quot;')}">Copy install</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  if (visible === 0) {
+    grid.innerHTML = '<div class="no-results">No skills match that filter — yet. Submit one via PR.</div>';
+  }
+
+  document.getElementById('visibleCount').textContent = `${visible} shown`;
+  document.getElementById('countLabel').textContent = `${visible} entr${visible !== 1 ? 'ies' : 'y'}`;
+
+  grid.querySelectorAll('.copy-install').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(btn.getAttribute('data-cmd')).then(() => {
+        btn.textContent = '✓ Copied';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy install'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  });
+}
+
+document.querySelector('.controls').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  renderGrid();
+});
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentSearch = e.target.value.toLowerCase().trim();
+  renderGrid();
+});
+
+renderGrid();
+</script>
+</body>
+</html>
